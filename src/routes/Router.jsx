@@ -6,6 +6,10 @@ import Home from "../pages/MainSection/HomePage/Home";
 import ErrorPage from "../pages/ErrorPage";
 import Register from "../pages/MainSection/AuthPages/Register";
 import Login from "../pages/MainSection/AuthPages/Login";
+import AdminDashboard from "../pages/DashBoard/Admin/AdminDashboard";
+import Dashboard from "../pages/DashBoard/Dashboard";
+import Profile from "../components/Dashboard/Profile";
+import AddTest from "../pages/DashBoard/Admin/AddATest/AddTest";
 
 
 const router = createBrowserRouter([
@@ -28,6 +32,25 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "/dashboard",
+        element: <Dashboard />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/dashboard",
+                element: <Profile />
+            },
+            {
+                path: "/dashboard/admin",
+                element: <AdminDashboard />
+            },
+            {
+                path: "/dashboard/addtest",
+                element: <AddTest />
+            }
+        ]
+    }
 ]);
 
 
