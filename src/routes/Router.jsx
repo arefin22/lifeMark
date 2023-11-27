@@ -10,6 +10,8 @@ import AdminDashboard from "../pages/DashBoard/Admin/AdminDashboard";
 import Dashboard from "../pages/DashBoard/Dashboard";
 import Profile from "../components/Dashboard/Profile";
 import AddTest from "../pages/DashBoard/Admin/AddATest/AddTest";
+import TestReport from "../pages/DashBoard/Admin/AddATest/TestReport";
+import CreateBanner from "../pages/DashBoard/Admin/Banners/CreateBanner";
 
 
 const router = createBrowserRouter([
@@ -48,7 +50,15 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/addtest",
                 element: <AddTest />
-            }
+            },
+            {
+                path: "/dashboard/testreport",
+                element: <TestReport />
+            },
+            {
+                path: "/dashboard/createbannar",
+                element: <CreateBanner />
+            },
         ]
     }
 ]);
