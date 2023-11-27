@@ -12,6 +12,7 @@ import Profile from "../components/Dashboard/Profile";
 import AddTest from "../pages/DashBoard/Admin/AddATest/AddTest";
 import TestReport from "../pages/DashBoard/Admin/AddATest/TestReport";
 import CreateBanner from "../pages/DashBoard/Admin/Banners/CreateBanner";
+import AllUsers from "../pages/DashBoard/Admin/Users/AllUsers";
 
 
 const router = createBrowserRouter([
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/createbannar",
                 element: <CreateBanner />
+            },
+            {
+                path: "/dashboard/alluser",
+                element: <AllUsers />
             },
         ]
     }
