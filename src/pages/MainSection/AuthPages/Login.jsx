@@ -1,15 +1,14 @@
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { FaGoogle } from "react-icons/fa";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, Navigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../../components/auth/AuthProvider";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { AuthContext } from "../../../components/auth/AuthProvider";
 
 const Login = () => {
-
-    const { signInUser, user } = useContext(AuthContext)
+    const location = useLocation();
+    const { signInUser } = useContext(AuthContext)
 
     const handleLogin = e => {
         e.preventDefault()
@@ -24,17 +23,18 @@ const Login = () => {
                 const loggedInUser = result.user
                 console.log(loggedInUser);
                 Navigate(location?.state ? location?.state : '/')
+                // toast('Log In Successful')
                 const loggedUser = { email }
                 axios.post('http://localhost:5000/jwt', loggedUser)
                     .then(res => {
-                        console.log(res);
                         toast('Log In Successful', res)
+                        console.log(res);
                     })
             })
-            .catch(err => toast('Invalid Email or Password', err))
+            .catch(err => console.log('Invalid Email or Password', err))
     }
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <div className="lg:mt-48 md:mt-16 mt-16">
@@ -65,12 +65,12 @@ const Login = () => {
                 </form>
                 <p className="mt-4 ml-1">Are You New? <NavLink to={'/register'} className="text-blue-800">Register Now</NavLink></p>
 
-                <div className="flex mt-4">
+                {/* <div className="flex mt-4">
                     <button className="btn btn-outline w-full text-black font-bold ">
                         <FaGoogle />
                         Google
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     );

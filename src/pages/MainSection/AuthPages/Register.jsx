@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import useDistrict from "../../../hooks/useDistrict";
 import useUpazila from "../../../hooks/useUpazila";
+import { imageUpload } from "../../../api/utils";
 
 const Register = () => {
 
@@ -23,13 +24,15 @@ const Register = () => {
     const { districts } = useDistrict();
     const { upazilas } = useUpazila('upazilas.json');
 
-    const handleRegister = e => {
+    const handleRegister = async e => {
         e.preventDefault()
 
         const form = e.target
         const email = form.email.value;
         const name = form.name.value;
-        const avatar = form.avatar.value;
+        const image = await imageUpload(form.avatar.files[0]);
+        const avatar = image?.data?.display_url
+        console.log(avatar);
         const bloodGroup = form.bloodGroup.value;
         const district = form.district.value;
         const upazila = form.upazila.value;
@@ -39,7 +42,7 @@ const Register = () => {
         const role = 'user';
         const loginData = { email, name, avatar, bloodGroup, district, upazila, password, confirmPassword, status, role };
 
-        axios.post('http://localhost:5000/user', loginData)
+        await axios.post('http://localhost:5000/user', loginData)
             .then(res => {
                 console.log(res);
             })
@@ -88,7 +91,7 @@ const Register = () => {
                     <div className="">
                         <label htmlFor="avatar" className=" block mb-2 text-sm font-medium text-gray-900 dark:text-gray-950">Avatar</label>
                         <div className="flex">
-                            <input name="avatar" required className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="avatar" type="file" />
+                            <input name="avatar" required className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="avatar" type="file" accept="image/*" />
                         </div>
                     </div>
                     {/* Blood Group */}
@@ -160,10 +163,10 @@ const Register = () => {
                         </div>
                     </div>
                     <button type="submit" className="btn md:col-span-2 btn-outline mt-3 w-full text-black font-bold ">
-                        Log In
+                        Sign Up
                     </button>
                 </form>
-                <p className="mt-4 ml-1">Already Have An Account? <NavLink to={'/login'} className="text-blue-800">Sign Up</NavLink></p>
+                <p className="mt-4 ml-1">Already Have An Account? <NavLink to={'/login'} className="text-blue-800">Log In</NavLink></p>
             </div>
         </div>
     );

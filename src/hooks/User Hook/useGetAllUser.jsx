@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosPublic from "../useAxiosPublic";
+
 
 const useGetAllUser = () => {
     const [allUser, setAllUser] = useState([]);
