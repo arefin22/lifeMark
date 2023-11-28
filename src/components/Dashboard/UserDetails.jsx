@@ -9,7 +9,7 @@ const UserDetails = user => {
         const newStatus = form.status.value
 
         const updatedUser = {newRole , newStatus}
-        console.log(updatedUser);
+        // console.log(updatedUser);
     }
     return (
         <div>

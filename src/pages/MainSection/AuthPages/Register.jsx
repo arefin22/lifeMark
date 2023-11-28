@@ -32,7 +32,6 @@ const Register = () => {
         const name = form.name.value;
         const image = await imageUpload(form.avatar.files[0]);
         const avatar = image?.data?.display_url
-        console.log(avatar);
         const bloodGroup = form.bloodGroup.value;
         const district = form.district.value;
         const upazila = form.upazila.value;
@@ -40,7 +39,7 @@ const Register = () => {
         const confirmPassword = form.confirmPassword.value;
         const status = 'active';
         const role = 'user';
-        const loginData = { email, name, avatar, bloodGroup, district, upazila, password, confirmPassword, status, role };
+        const loginData = { email, name, avatar, bloodGroup, district, upazila, status, role };
 
         await axios.post('http://localhost:5000/user', loginData)
             .then(res => {
@@ -59,8 +58,6 @@ const Register = () => {
         registerUser(email, password)
             .then(res => toast('Congratulations! For Being A Member', res))
             .catch(err => toast('Try Again Please', err))
-
-
     }
     return (
         <div className="mt-16">

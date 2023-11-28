@@ -1,14 +1,16 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { imageUpload } from "../../../../api/utils";
 
 const AddTest = () => {
 
-    const handleTestAdd = e => {
+    const handleTestAdd = async e => {
         e.preventDefault()
 
         const form = e.target;
         const testName = form.testName.value;
-        const testImgUrl = form.imageUrl.value;
+        const image = await imageUpload(form.imageUrl.files[0]);
+        const testImgUrl = image?.data?.display_url
         const testPrice = form.price.value;
         const testDate = form.date.value;
         const testSlots = form.slots.value;
@@ -22,13 +24,12 @@ const AddTest = () => {
                 }
             })
     }
-
     return (
         <div className="mx-auto w-full">
             <h2 className="text-3xl text-center">Add A Test</h2>
             <form onSubmit={handleTestAdd} className="flex flex-col justify-center gap-3">
                 <input type="text" name="testName" placeholder="Test Name" />
-                <input type="text" name="imageUrl" placeholder="Image Url..." />
+                <input type="file" name="imageUrl" accept="image/*" placeholder="Image Url..." />
                 <input type="number" name="price" placeholder="Test Price" />
                 <input type="date" name="date" />
                 <input type="number" name="slots" placeholder="Available Test Number" />

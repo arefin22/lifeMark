@@ -1,35 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../auth/AuthProvider";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../shared/loading/Loading";
+import useSingleUser from "../../hooks/User Hook/useSingleUser";
 
 const Profile = () => {
-
-    const [userData, setUserData] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const singleUser = (userData?.data[0]);
-    const { user } = useContext(AuthContext)
-    const axiosPublic = useAxiosPublic()
-
-
-    useEffect(() => {
-        const singleUserData = async () => {
-            try {
-                setLoading(true)
-                axiosPublic.get(`/user/${user?.email}`)
-                    .then(res => {
-                        setUserData(res)
-                        setLoading(false)
-                    })
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-                // Handle the error gracefully, show an error message, or perform other actions as needed
-            }
-        };
-        singleUserData()
-    }, [axiosPublic, user])
-
-
+    const { user } = useContext(AuthContext)  
+    const { singleUser, loading } = useSingleUser(user?.email)
 
     return (
         <div>
@@ -39,11 +15,11 @@ const Profile = () => {
                         <Loading />
                     </>
                     : <>
-                        <img src={singleUser?.avatar} alt="" className="w-44 h-44 rounded-full" />
-                        <p>Name : {singleUser?.name} ({singleUser?.status})</p>
-                        <p>Email : {singleUser?.email}</p>
-                        <p>Blood Group : {singleUser?.bloodGroup}</p>
-                        <p>Address : {singleUser?.upazila}, {singleUser?.district}.</p>
+                        <img src={singleUser[0]?.avatar} alt="" className="w-44 h-44 rounded-full" />
+                        <p>Name : {singleUser[0]?.name} ({singleUser[0]?.status})</p>
+                        <p>Email : {singleUser[0]?.email}</p>
+                        <p>Blood Group : {singleUser[0]?.bloodGroup}</p>
+                        <p>Address : {singleUser[0]?.upazila}, {singleUser[0]?.district}.</p>
                     </>
             }
 
