@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import Main from "../pages/MainSection/Main";
 import Home from "../pages/MainSection/HomePage/Home";
 import ErrorPage from "../pages/ErrorPage";
@@ -14,6 +12,7 @@ import TestReport from "../pages/DashBoard/Admin/AddATest/TestReport";
 import CreateBanner from "../pages/DashBoard/Admin/Banners/CreateBanner";
 import AllUsers from "../pages/DashBoard/Admin/Users/AllUsers";
 import AllTest from "../pages/DashBoard/Admin/AllTests/AllTest";
+import AllBanners from "../pages/DashBoard/Admin/Banners/AllBanners";
 
 
 const router = createBrowserRouter([
@@ -68,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/alltest',
                 element: <AllTest />
+            },
+            {
+                path: '/dashboard/banner',
+                element: <AllBanners />
             }
         ]
     }

@@ -1,13 +1,17 @@
-import axios from "axios";
 import { toast } from "react-toastify";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import { imageUpload } from "../../../../api/utils";
 
 const CreateBanner = () => {
 
-    const handleBanner = e => {
+    const axiosPublic = useAxiosPublic()
+
+    const handleBanner = async e => {
         e.preventDefault()
         const form = e.target;
         const bannerName = form.bannerName.value;
-        const bannerImg = form.bannerImg.value;
+        const image = await imageUpload(form.bannerImg.files[0]);
+        const bannerImg = image?.data?.display_url;
         const bannerTitle = form.bannerTitle.value;
         const couponCodeName = form.couponCodeName.value;
         const couponRate = form.couponRate.value;
@@ -16,12 +20,17 @@ const CreateBanner = () => {
 
         const bannerData = {bannerName, bannerImg, bannerTitle, couponCodeName, couponRate, isActive, bannerDescription}
 
-        axios.post('http://localhost:5000/banners', bannerData)
-            .then(res => {
-                if(res.data.insertedId){
-                    toast('Banner Added Successfully');
-                }
-            })
+        try{
+            await axiosPublic.post('/banners', bannerData)
+                .then(res => {
+                    if(res.data.insertedId){
+                        toast('Banner Added Successfully');
+                    }
+                })
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -31,7 +40,7 @@ const CreateBanner = () => {
 
             <form action="" onSubmit={handleBanner} className="flex flex-col gap-4">
                 <input type="text" name="bannerName" id="" placeholder="Banner Name" />
-                <input type="text" name="bannerImg" id="" placeholder="Image Url..." />
+                <input type="file" accept="image/*" name="bannerImg" id="" placeholder="Image Url..." />
                 <input type="text" name="bannerTitle" id="" placeholder="Banner Title" />
                 <input type="text" name="couponCodeName" id="" placeholder="Coupon Code Name" />
                 <input type="number" name="couponRate" id="" placeholder="Coupon Rate"/>
