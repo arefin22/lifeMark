@@ -5,10 +5,10 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { useContext } from "react";
 import { AuthContext } from "../../../components/auth/AuthProvider";
 import { toast } from "react-toastify";
-import axios from "axios";
 import useDistrict from "../../../hooks/useDistrict";
 import useUpazila from "../../../hooks/useUpazila";
 import { imageUpload } from "../../../api/utils";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Register = () => {
 
@@ -23,6 +23,7 @@ const Register = () => {
 
     const { districts } = useDistrict();
     const { upazilas } = useUpazila('upazilas.json');
+    const {axiosPublic} = useAxiosPublic()
 
     const handleRegister = async e => {
         e.preventDefault()
@@ -41,7 +42,7 @@ const Register = () => {
         const role = 'user';
         const loginData = { email, name, avatar, bloodGroup, district, upazila, status, role };
 
-        await axios.post('http://localhost:5000/user', loginData)
+        await axiosPublic.post('/user', loginData)
             .then(res => {
                 console.log(res);
             })

@@ -14,7 +14,7 @@ import AllUsers from "../pages/DashBoard/Admin/Users/AllUsers";
 import AllTest from "../pages/DashBoard/Admin/AllTests/AllTest";
 import AllBanners from "../pages/DashBoard/Admin/Banners/AllBanners";
 import Tests from "../pages/MainSection/HomePage/Tests";
-import SingleTestPage from "../pages/MainSection/HomePage/SingleTestPage";
+import SingleTestDetails from "../pages/MainSection/HomePage/SingleTestDetails";
 import TestResult from "../pages/DashBoard/User/UserTestResult/TestResult";
 import Appointment from "../pages/DashBoard/User/UserAppointment/Appointment";
 
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/tests/:id',
-                element: <SingleTestPage />
+                element: <SingleTestDetails />
             }
         ]
     },

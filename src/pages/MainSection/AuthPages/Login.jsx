@@ -3,12 +3,13 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { NavLink, Navigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { AuthContext } from "../../../components/auth/AuthProvider";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Login = () => {
     const location = useLocation();
     const { signInUser } = useContext(AuthContext)
+    const {axiosPublic} = useAxiosPublic()
 
     const handleLogin = e => {
         e.preventDefault()
@@ -25,7 +26,7 @@ const Login = () => {
                 Navigate(location?.state ? location?.state : '/')
                 // toast('Log In Successful')
                 const loggedUser = { email }
-                axios.post('http://localhost:5000/jwt', loggedUser)
+                axiosPublic.post('/jwt', loggedUser)
                     .then(res => {
                         toast('Log In Successful', res)
                         console.log(res);

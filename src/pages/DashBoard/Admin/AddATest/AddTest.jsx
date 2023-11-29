@@ -1,8 +1,11 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import { imageUpload } from "../../../../api/utils";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const AddTest = () => {
+
+
+    const {axiosPublic} = useAxiosPublic()
 
     const handleTestAdd = async e => {
         e.preventDefault()
@@ -17,7 +20,7 @@ const AddTest = () => {
         const testDetails = form.details.value;
         const testData = { testName, testDate, testImgUrl, testPrice, testSlots, testDetails }
 
-        axios.post('http://localhost:5000/tests', testData)
+        axiosPublic.post('/tests', testData)
             .then(res => {
                 if(res.data.insertedId){
                     toast('Test Added Successfully');
