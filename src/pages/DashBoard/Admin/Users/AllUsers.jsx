@@ -2,19 +2,21 @@ import { useState } from "react";
 import SingleUser from "../../../../components/Dashboard/singleUser";
 import Loading from "../../../../components/shared/loading/Loading";
 import useGetAllUser from "../../../../hooks/User Hook/useGetAllUser";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 
 const AllUsers = () => {
 
     const { allUser, loading } = useGetAllUser()
     const [user, setUser] = useState([])
+    const axiosPublic = useAxiosPublic()
 
     const handleShowModal = (id) => {
         setUser(allUser[id]);
         document.getElementById('my_modal_2').showModal()
     }
-    const handleUserUpdate = () => {
-        
+    const handleUserUpdate = async(e) => {
+        e.preventDefault()
     }
 
     return (

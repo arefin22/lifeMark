@@ -8,6 +8,14 @@ const DashboardNavBar = () => {
                 <img className="w-44" src="https://i.ibb.co/CbmMyPz/White-Logo.png" alt="LifeMark" />
             </NavLink>
             <hr className=" p-3" />
+
+            <NavLink to={'/dashboard'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">Profile</NavLink>
+            <NavLink to={'/dashboard/testresult'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">Test Result</NavLink>
+            <NavLink to={'/dashboard/appointment'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">Upcoming Appointment</NavLink>
+            
+            
+            
+            
             <NavLink to={'/dashboard/alluser'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">All Users</NavLink>
             <NavLink to={'/dashboard/alltest'} className="py-4 px-4 bg-slate-700 rounded-lg mb-1 hover:bg-slate-800">All Tests</NavLink>
             <NavLink to={'/dashboard/banner'} className="py-4 px-4 bg-slate-700 rounded-lg mb-1 hover:bg-slate-800">All Banner</NavLink>

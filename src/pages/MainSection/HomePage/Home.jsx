@@ -1,31 +1,13 @@
 import { Helmet } from "react-helmet-async";
+import Banner from "../../../components/HomePage/Banner";
 
 const Home = () => {
     return (
         <div>
             <Helmet>
-            <title>Home - LifeMark</title>
+                <title>Home - LifeMark</title>
             </Helmet>
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
-            Home Section
+            <Banner />
         </div>
     );
 };

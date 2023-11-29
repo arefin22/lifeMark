@@ -14,6 +14,9 @@ import AllUsers from "../pages/DashBoard/Admin/Users/AllUsers";
 import AllTest from "../pages/DashBoard/Admin/AllTests/AllTest";
 import AllBanners from "../pages/DashBoard/Admin/Banners/AllBanners";
 import Tests from "../pages/MainSection/HomePage/Tests";
+import SingleTestPage from "../pages/MainSection/HomePage/SingleTestPage";
+import TestResult from "../pages/DashBoard/User/UserTestResult/TestResult";
+import Appointment from "../pages/DashBoard/User/UserAppointment/Appointment";
 
 
 const router = createBrowserRouter([
@@ -37,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: '/tests',
                 element: <Tests />
+            },
+            {
+                path: '/tests/:id',
+                element: <SingleTestPage />
             }
         ]
     },
@@ -48,6 +55,14 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <Profile />
+            },
+            {
+                path: '/dashboard/testresult',
+                element: <TestResult />
+            },
+            {
+                path: '/dashboard/appointment',
+                element: <Appointment />
             },
             {
                 path: "/dashboard/admin",

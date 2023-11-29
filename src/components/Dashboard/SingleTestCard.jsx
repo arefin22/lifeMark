@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 const SingleTestCard = test => {
-    const { testDate, testDetails, testImgUrl, testName, testPrice, testSlots } = test.children;
+    const { _id, testDate, testDetails, testImgUrl, testName, testPrice, testSlots } = test.children;
     return (
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
@@ -16,7 +17,7 @@ const SingleTestCard = test => {
                     <div className="flex flex-col justify-center text-right">
                         <span className="text-gray-900 dark:text-white">Date : {testDate}</span>
                         <span className="text-gray-900 dark:text-white">Available Slots : {testSlots}</span>
-                        <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">Make Reservation</a>
+                        <Link to={`/tests/${_id}`} className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">See Details</Link>
                     </div>
                 </div>
             </div>
