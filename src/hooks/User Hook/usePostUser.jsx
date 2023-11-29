@@ -4,11 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../components/auth/AuthProvider";
 
 const usePostUser = (loginData) => {
-
     const axiosPublic = useAxiosPublic()
     const {registerUser} = useContext(AuthContext)
-
-    // const { email, password, confirmPassword } = loginData
 
     const postUser = async () => {
         await axiosPublic.post('/user', loginData)

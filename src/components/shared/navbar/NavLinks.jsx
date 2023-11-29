@@ -6,6 +6,9 @@ const NavLinks = () => {
             <NavLink to={'/'} className="block py-2 px-3 dark:text-white text-blue-500" >
                 Home
             </NavLink>
+            <NavLink to={'/tests'} className="block py-2 px-3 dark:text-white text-blue-500" >
+                All Tests
+            </NavLink>
             <NavLink to={'/dashboard'} className="block py-2 px-3 dark:text-white text-blue-500" >
                 Dashboard
             </NavLink>

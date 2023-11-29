@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../pages/MainSection/Main";
 import Home from "../pages/MainSection/HomePage/Home";
 import ErrorPage from "../pages/ErrorPage";
@@ -13,6 +13,7 @@ import CreateBanner from "../pages/DashBoard/Admin/Banners/CreateBanner";
 import AllUsers from "../pages/DashBoard/Admin/Users/AllUsers";
 import AllTest from "../pages/DashBoard/Admin/AllTests/AllTest";
 import AllBanners from "../pages/DashBoard/Admin/Banners/AllBanners";
+import Tests from "../pages/MainSection/HomePage/Tests";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />
+            },
+            {
+                path: '/tests',
+                element: <Tests />
             }
         ]
     },
