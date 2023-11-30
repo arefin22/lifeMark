@@ -12,7 +12,7 @@ const AllBanners = () => {
 
     const handleClick = async(id) => {
         const theData = allBanner?.filter(data => data._id !== id);
-        await axiosPublic.delete(`banner/${id}`)
+        await axiosPublic.delete(`banners/${id}`)
         .then(res => {
             console.log(res);
             toast('Delete Successful', res)

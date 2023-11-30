@@ -23,7 +23,7 @@ const Register = () => {
 
     const { districts } = useDistrict();
     const { upazilas } = useUpazila('upazilas.json');
-    const {axiosPublic} = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
 
     const handleRegister = async e => {
         e.preventDefault()
@@ -89,7 +89,7 @@ const Register = () => {
                     <div className="">
                         <label htmlFor="avatar" className=" block mb-2 text-sm font-medium text-gray-900 dark:text-gray-950">Avatar</label>
                         <div className="flex">
-                            <input name="avatar" required className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="avatar" type="file" accept="image/*" />
+                            <input name="avatar" required className="block h-10 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="avatar" type="file" accept="image/*" />
                         </div>
                     </div>
                     {/* Blood Group */}

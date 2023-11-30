@@ -26,12 +26,17 @@ const SingleTestDetails = () => {
 
     }
     const handleAppointmentConfirm = () => {
-        // axiosPublic.post('/tests', testData)
-        //     .then(res => {
-        //         if (res.data.insertedId) {
-        //             toast('Test Added Successfully');
-        //         }
-        //     })
+        const postid = singleTest?._id
+        const date = singleTest?.testDate
+        const email = user?.email
+        const appointmentdata = {postid, date, email}
+        console.log(appointmentdata);
+        axiosPublic.post('/appointment', appointmentdata)
+            .then(res => { console.log(res.data)
+                if (res.data._id) {
+                    toast('Appointment Successful');
+                }
+            })
     }
     // const { _id, testDate, testDetails, testImgUrl, testName, testPrice, testSlots } = test.children;
     return (
@@ -64,7 +69,7 @@ const SingleTestDetails = () => {
             <dialog id="my_modal_2" className="modal">
                 <div className="modal-box">
 
-                    <button onClick={handleAppointmentConfirm}>Make Payment</button>
+                    <button className="btn btn-ghost" onClick={handleAppointmentConfirm}>Make Payment</button>
                 </div>
                 <form method="dialog" className="modal-backdrop">
                     <button>close</button>

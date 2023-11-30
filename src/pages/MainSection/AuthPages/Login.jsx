@@ -9,26 +9,28 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 const Login = () => {
     const location = useLocation();
     const { signInUser } = useContext(AuthContext);
-    const { axiosPublic } = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
 
     const handleLogin = async e => {
-        e.preventDefault()
-        const form = e.target
-        const email = form.email.value;
-        const password = form.password.value;
-        const loginData = { email, password };
-        console.log(loginData);
-
         try {
+            e.preventDefault()
+            const form = e.target
+            const email = form.email.value;
+            const password = form.password.value;
+            // const loginData = { email, password };
+            // console.log(loginData);
+
+
+
             const result = await signInUser(email, password);
             const loggedInUser = result.user
             console.log(loggedInUser);
             Navigate(location?.state ? location?.state : '/')
             // toast('Log In Successful')
-            const loggedUser = { email }
-            const res = await axiosPublic.post('/jwt', loggedUser)
-            toast('Log In Successful', res);
-            console.log(res);
+            // const loggedUser = { email }
+            // const res = await axiosPublic.post('/jwt', loggedUser)
+            // toast('Log In Successful', res);
+            // console.log(res);
 
         }
         catch (err) { console.log('Invalid Email or Password', err) }
@@ -59,18 +61,12 @@ const Login = () => {
                             <input type="password" id="password" name="password" className="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type Password" />
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-outline mt-6 w-full text-black font-bold ">
+                    {/* <button type="submit" >
                         Log In
-                    </button>
+                    </button> */}
+                    <input type="submit" className="btn btn-outline mt-6 w-full text-black font-bold " value="Log In" />
                 </form>
                 <p className="mt-4 ml-1">Are You New? <NavLink to={'/register'} className="text-blue-800">Register Now</NavLink></p>
-
-                {/* <div className="flex mt-4">
-                    <button className="btn btn-outline w-full text-black font-bold ">
-                        <FaGoogle />
-                        Google
-                    </button>
-                </div> */}
             </div>
         </div>
     );
