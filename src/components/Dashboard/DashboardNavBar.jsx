@@ -22,8 +22,8 @@ const DashboardNavBar = () => {
             {
                 LoggedInUser === 'user' ?
                     <>
-                        <NavLink to={'/dashboard/testresult'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">Test Result</NavLink>
                         <NavLink to={'/dashboard/appointment'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">Upcoming Appointment</NavLink>
+                        <NavLink to={'/dashboard/testresult'} className="py-4 px-4 mb-1 hover:bg-slate-800 bg-slate-700 rounded-lg">Test Result</NavLink>
                     </>
                     :
                     <>

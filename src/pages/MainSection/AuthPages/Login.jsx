@@ -1,6 +1,6 @@
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { NavLink, Navigate, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../components/auth/AuthProvider";
@@ -10,6 +10,7 @@ const Login = () => {
     const location = useLocation();
     const { signInUser } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const handleLogin = async e => {
         try {
@@ -25,12 +26,12 @@ const Login = () => {
             const result = await signInUser(email, password);
             const loggedInUser = result.user
             console.log(loggedInUser);
-            Navigate(location?.state ? location?.state : '/')
+            navigate(location?.state ? location?.state : '/')
             // toast('Log In Successful')
-            // const loggedUser = { email }
-            // const res = await axiosPublic.post('/jwt', loggedUser)
-            // toast('Log In Successful', res);
-            // console.log(res);
+            const loggedUser = { email }
+            const res = await axiosPublic.post('/jwt', loggedUser)
+            toast('Log In Successful', res);
+            console.log(res);
 
         }
         catch (err) { console.log('Invalid Email or Password', err) }
