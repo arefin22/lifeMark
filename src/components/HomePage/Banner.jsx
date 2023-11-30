@@ -5,7 +5,7 @@ const Banner = () => {
 
     const activeBanner = useSingleBanner()
     const bannerImg = activeBanner?.bannerImg;
-    console.log(activeBanner);
+    // console.log(activeBanner);
     
     
     return (

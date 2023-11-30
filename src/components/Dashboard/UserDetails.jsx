@@ -1,6 +1,5 @@
 
 const UserDetails = user => {
-    console.log(user);
     const { name, email, avatar, bloodGroup, district, upazila, role, status } = user.user.children;
     const handleUserUpdate = e => {
         e.preventDefault()

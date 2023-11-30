@@ -5,7 +5,6 @@ const useUpdateTest = (id, updatedSlots) => {
     const [updateTest, setUpdateTest] = useState(null);
     const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
-    console.log('Outside UseEffect', id);
     useEffect(() => {
         const updatedSlot = async (id, updatedSlots) => {
             setLoading(true)

@@ -3,6 +3,7 @@ import SingleUser from "../../../../components/Dashboard/singleUser";
 import Loading from "../../../../components/shared/loading/Loading";
 import useGetAllUser from "../../../../hooks/User Hook/useGetAllUser";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 
 const AllUsers = () => {
@@ -17,6 +18,19 @@ const AllUsers = () => {
     }
     const handleUserUpdate = async(e) => {
         e.preventDefault()
+        const role = e.target.role.value
+        const status = e.target.status.value
+        const data = {role, status}
+
+        // console.log(data );
+        axiosPublic.patch(`/users/${user?.email}`, data)
+            .then((data) => {
+                console.log(data);
+                if (data.data.modifiedCount) {
+                    toast('Item Edited Successfully')
+                    // form.reset()
+                }
+            })
     }
 
     return (

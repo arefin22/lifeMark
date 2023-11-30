@@ -8,10 +8,10 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Login = () => {
     const location = useLocation();
-    const { signInUser } = useContext(AuthContext)
-    const {axiosPublic} = useAxiosPublic()
+    const { signInUser } = useContext(AuthContext);
+    const { axiosPublic } = useAxiosPublic();
 
-    const handleLogin = e => {
+    const handleLogin = async e => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value;
@@ -19,20 +19,19 @@ const Login = () => {
         const loginData = { email, password };
         console.log(loginData);
 
-        signInUser(email, password)
-            .then(result => {
-                const loggedInUser = result.user
-                console.log(loggedInUser);
-                Navigate(location?.state ? location?.state : '/')
-                // toast('Log In Successful')
-                const loggedUser = { email }
-                axiosPublic.post('/jwt', loggedUser)
-                    .then(res => {
-                        toast('Log In Successful', res)
-                        console.log(res);
-                    })
-            })
-            .catch(err => console.log('Invalid Email or Password', err))
+        try {
+            const result = await signInUser(email, password);
+            const loggedInUser = result.user
+            console.log(loggedInUser);
+            Navigate(location?.state ? location?.state : '/')
+            // toast('Log In Successful')
+            const loggedUser = { email }
+            const res = await axiosPublic.post('/jwt', loggedUser)
+            toast('Log In Successful', res);
+            console.log(res);
+
+        }
+        catch (err) { console.log('Invalid Email or Password', err) }
     }
 
     // console.log(user);

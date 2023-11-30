@@ -19,7 +19,6 @@ const AllBanners = () => {
         })
             setUpdatedBanner(theData)
     }
-    console.log(updatedBanner);
     useEffect(() => {
         if (allBanner) {
             setUpdatedBanner(allBanner)

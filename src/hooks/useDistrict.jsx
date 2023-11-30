@@ -8,7 +8,6 @@ const useDistrict = () => {
             const response = await axios.get('districts.json');
             const data = response.data;
             const districtData = data;
-            // console.log(districtData);
             setDistricts(districtData);}
             fetchData();
         }, []);

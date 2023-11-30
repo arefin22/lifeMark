@@ -17,6 +17,10 @@ import Tests from "../pages/MainSection/HomePage/Tests";
 import SingleTestDetails from "../pages/MainSection/HomePage/SingleTestDetails";
 import TestResult from "../pages/DashBoard/User/UserTestResult/TestResult";
 import Appointment from "../pages/DashBoard/User/UserAppointment/Appointment";
+import PrivateRoute from "../components/auth/PrivateRoute";
+import AboutUs from "../pages/MainSection/ExtraPages/AboutUs";
+import ContuctUs from "../pages/MainSection/ExtraPages/ContuctUs";
+import News from "../pages/MainSection/ExtraPages/News";
 
 
 const router = createBrowserRouter([
@@ -43,54 +47,66 @@ const router = createBrowserRouter([
             },
             {
                 path: '/tests/:id',
-                element: <SingleTestDetails />
+                element: <PrivateRoute><SingleTestDetails /></PrivateRoute>
+            },
+            {
+                path: '/about',
+                element: <AboutUs />
+            },
+            {
+                path: '/contuctus',
+                element: <ContuctUs />
+            },
+            {
+                path: '/news',
+                element: <News />
             }
         ]
     },
     {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         errorElement: <ErrorPage />,
         children: [
             {
                 path: "/dashboard",
-                element: <Profile />
+                element: <PrivateRoute><Profile /></PrivateRoute>
             },
             {
                 path: '/dashboard/testresult',
-                element: <TestResult />
+                element: <PrivateRoute><TestResult /></PrivateRoute>
             },
             {
                 path: '/dashboard/appointment',
-                element: <Appointment />
+                element: <PrivateRoute><Appointment /></PrivateRoute>
             },
             {
                 path: "/dashboard/admin",
-                element: <AdminDashboard />
+                element: <PrivateRoute><AdminDashboard /></PrivateRoute>
             },
             {
                 path: "/dashboard/addtest",
-                element: <AddTest />
+                element: <PrivateRoute><AddTest /></PrivateRoute>
             },
             {
                 path: "/dashboard/testreport",
-                element: <TestReport />
+                element: <PrivateRoute><TestReport /></PrivateRoute>
             },
             {
                 path: "/dashboard/createbannar",
-                element: <CreateBanner />
+                element: <PrivateRoute><CreateBanner /></PrivateRoute>
             },
             {
                 path: "/dashboard/alluser",
-                element: <AllUsers />
+                element: <PrivateRoute><AllUsers /></PrivateRoute>
             },
             {
                 path: '/dashboard/alltest',
-                element: <AllTest />
+                element: <PrivateRoute><AllTest /></PrivateRoute>
             },
             {
                 path: '/dashboard/banner',
-                element: <AllBanners />
+                element: <PrivateRoute><AllBanners /></PrivateRoute>
             }
         ]
     }

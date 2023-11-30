@@ -5,10 +5,12 @@ const useSingleUser = (email) => {
     const [singleUser, setSingleUser] = useState([]);
     const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
+    // console.log(singleUser);
     useEffect(() => {
         const singleUserData = async () => {
             setLoading(true)
             try {
+                // console.log(email);
                 await axiosPublic.get(`/user/${email}`)
                     .then(res => setSingleUser(res.data))
                 setLoading(false)
