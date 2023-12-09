@@ -27,9 +27,10 @@ const SingleTestDetails = () => {
     }
     const handleAppointmentConfirm = () => {
         const postid = singleTest?._id
+        const test = singleTest
         const date = singleTest?.testDate
         const email = user?.email
-        const appointmentdata = {postid, date, email}
+        const appointmentdata = {postid, test, date, email}
         console.log(appointmentdata);
         axiosPublic.post('/appointment', appointmentdata)
             .then(res => { console.log(res.data)
